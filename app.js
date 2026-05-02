@@ -4,6 +4,8 @@ const morgan = require("morgan");
 const dotenv = require("dotenv");
 const connectToDB = require("./db/dbService");
 const chalk = require('chalk');
+const authRoutes = require("./routes/authRoutes");
+const sectionRoutes = require("./routes/sectionRoutes");
 
 dotenv.config();
 
@@ -13,6 +15,9 @@ connectToDB();
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
+app.use("/api/auth", authRoutes);
+app.use("/api/sections", sectionRoutes);
+
 
 app.get("/", (req, res) => {
   res.send("API is running");
