@@ -6,6 +6,10 @@ const connectToDB = require("./db/dbService");
 const chalk = require('chalk');
 const authRoutes = require("./routes/authRoutes");
 const sectionRoutes = require("./routes/sectionRoutes");
+const fieldRoutes = require("./routes/fieldRoutes");
+// const corsMiddleware = require("./middlewere/corsMiddleware");
+
+// app.use(corsMiddleware);
 
 dotenv.config();
 
@@ -17,7 +21,7 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use("/api/auth", authRoutes);
 app.use("/api/sections", sectionRoutes);
-
+app.use("/api", fieldRoutes);
 
 app.get("/", (req, res) => {
   res.send("API is running");
