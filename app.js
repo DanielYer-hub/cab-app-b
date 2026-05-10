@@ -7,8 +7,8 @@ const chalk = require('chalk');
 const authRoutes = require("./routes/authRoutes");
 const sectionRoutes = require("./routes/sectionRoutes");
 const fieldRoutes = require("./routes/fieldRoutes");
+const recordRoutes = require("./routes/recordRoutes");
 // const corsMiddleware = require("./middlewere/corsMiddleware");
-
 // app.use(corsMiddleware);
 
 dotenv.config();
@@ -22,6 +22,7 @@ app.use(morgan("dev"));
 app.use("/api/auth", authRoutes);
 app.use("/api/sections", sectionRoutes);
 app.use("/api", fieldRoutes);
+app.use("/api", recordRoutes);
 
 app.get("/", (req, res) => {
   res.send("API is running");
